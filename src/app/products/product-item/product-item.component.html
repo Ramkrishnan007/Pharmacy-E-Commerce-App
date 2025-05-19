@@ -1,0 +1,32 @@
+<!-- File: src/app/products/product-item/product-item.component.html -->
+<!-- IMPORTANT: Ensure MatCardModule and MatButtonModule are imported in your module.ts -->
+<div class="product-card">
+  <mat-card>
+    <img mat-card-image [src]="product.image || 'assets/placeholder.png'" alt="{{ product.name }}" />
+    <mat-card-title>{{ product.name }}</mat-card-title>
+    <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
+    <mat-card-content>
+      <p>{{ product.description }}</p>
+      <h4 class="price">₹{{ product.price }}</h4>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="addToCart()">Add to Cart</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<!--
+  To fix "mat-card is not a known element" error:
+  In your module file (e.g., app.module.ts or products.module.ts), add:
+
+  import { MatCardModule } from '@angular/material/card';
+  import { MatButtonModule } from '@angular/material/button';
+
+  Then add them to the imports[] array:
+
+  imports: [
+    ...,
+    MatCardModule,
+    MatButtonModule
+  ]
+-->

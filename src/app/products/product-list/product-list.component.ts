@@ -22,7 +22,7 @@ export class ProductListComponent implements OnInit {
     const filters: any = {};
     if (this.searchTerm) filters.search = this.searchTerm;
     if (this.selectedCategory) filters.category = this.selectedCategory;
-    this.productService.getProducts(filters).subscribe(res => {
+    this.productService.getProducts(filters).subscribe((res: any[]) => {
       this.products = res;
     });
   }

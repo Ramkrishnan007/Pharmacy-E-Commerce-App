@@ -13,3 +13,12 @@ export class ProductService {
   }
   // ... other methods (getProduct, addProduct, etc.)
 }
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+@NgModule({
+  imports: [
+    BrowserAnimationsModule,
+    ...
+  ]
+})

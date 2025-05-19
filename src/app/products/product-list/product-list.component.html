@@ -1,15 +1,32 @@
-<mat-form-field appearance="outline" class="search-box">
-  <input matInput placeholder="Search" (input)="onSearch($event)" />
-</mat-form-field>
+<div class="product-list-container">
+  <mat-toolbar color="primary">Pharmacy - Browse Products</mat-toolbar>
 
-<mat-form-field appearance="outline" class="category-filter">
-  <mat-label>Category</mat-label>
-  <mat-select [(value)]="selectedCategory" (selectionChange)="onFilter()">
-    <mat-option value="">All</mat-option>
-    <mat-option *ngFor="let c of categories" [value]="c">{{ c }}</mat-option>
-  </mat-select>
-</mat-form-field>
+  <div class="filters">
+    <mat-form-field appearance="outline">
+      <mat-label>Search</mat-label>
+      <input matInput placeholder="Search for medicine" (input)="onSearch($event)" />
+    </mat-form-field>
 
-<div class="product-grid">
-  <app-product-item *ngFor="let p of products" [product]="p"></app-product-item>
+    <mat-form-field appearance="outline">
+      <mat-label>Category</mat-label>
+      <mat-select [(value)]="selectedCategory" (selectionChange)="onFilter()">
+        <mat-option value="">All</mat-option>
+        <mat-option *ngFor="let c of categories" [value]="c">{{ c }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="product-grid">
+    <ng-container *ngIf="products.length > 0; else noResults">
+      <app-product-item
+        *ngFor="let product of products"
+        [product]="product"
+        class="product-card">
+      </app-product-item>
+    </ng-container>
+
+    <ng-template #noResults>
+      <p class="no-results">No products found.</p>
+    </ng-template>
+  </div>
 </div>
