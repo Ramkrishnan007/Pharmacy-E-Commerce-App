@@ -1,0 +1,17 @@
+.search-box, .category-filter {
+  width: 100%;
+  max-width: 300px;
+  margin: 1rem 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+app-product-item {
+  flex: 1 0 200px;
+}

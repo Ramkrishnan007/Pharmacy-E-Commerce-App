@@ -1,1 +1,15 @@
-<p>product-list works!</p>
+<mat-form-field appearance="outline" class="search-box">
+  <input matInput placeholder="Search" (input)="onSearch($event)" />
+</mat-form-field>
+
+<mat-form-field appearance="outline" class="category-filter">
+  <mat-label>Category</mat-label>
+  <mat-select [(value)]="selectedCategory" (selectionChange)="onFilter()">
+    <mat-option value="">All</mat-option>
+    <mat-option *ngFor="let c of categories" [value]="c">{{ c }}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div class="product-grid">
+  <app-product-item *ngFor="let p of products" [product]="p"></app-product-item>
+</div>
